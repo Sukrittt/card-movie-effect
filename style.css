@@ -1,0 +1,138 @@
+@import url('https://fonts.googleapis.com/css2?family=Merienda+One&display=swap');
+:root {
+    --background-rgb: 29 30 34;
+    --blue-rgb: 33 150 243;
+    --primary-rgb: var(--blue-rgb);
+    
+    --blob-color-1: rgb(var(--blue-rgb));
+    --blob-color-2: dodgerblue;
+}
+*{
+    box-sizing: border-box;
+}
+@font-face {
+    font-family: New_Font;
+    src: url(./Fonts/Sk-Modernist-Mono.otf);
+}
+body {
+    height: 100vh;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background-color: rgb(var(--background-rgb));
+    margin: 0rem;
+    overflow: hidden;
+}
+.screen-content > a{
+    font-size: 8em;
+    text-decoration: none;
+    color: #FAF7FF;
+    font-family: New_Font;
+    cursor: pointer;
+}
+.screen{
+    width: 500px;
+    border: 3px solid rgb(var(--primary-rgb));
+    aspect-ratio: 10 / 14;
+    border-radius: 1rem;
+    background-color: rgb(var(--primary-rgb) / 15%);
+    overflow: hidden;
+    position: relative;
+    display: grid;
+    place-content: center;
+}
+
+.screen-overlay{
+    background: linear-gradient(
+        rgb(var(--primary-rgb) / 0.15),
+        rgb(var(--primary-rgb) / 0.15) 3px,
+        transparent 3px,
+        transparent 9px
+    );
+    background-size: 100% 9px;
+    height: 100%;
+    width: 100%;
+    animation: pan-overlay 22s infinite linear;
+    position: absolute;
+    z-index: 2;
+    left: 0;
+    top: 0;
+}
+@keyframes pan-overlay {
+    from{
+        background-position: 0% 0%;
+    }
+    to{
+        background-position: 0% -100%;
+    }
+}
+.screen >.screen-image{
+    background-image: url("https://images.unsplash.com/photo-1515266591878-f93e32bc5937?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2574&q=80");
+    height: 100%;
+    width: 100%;
+    background-repeat: no-repeat;
+    object-fit: cover;
+    background-size: 300%;
+    background-position: center;
+    filter: sepia(100%) hue-rotate(160deg);
+    opacity: .6;
+    animation: pan-image 15s linear infinite;
+    position: absolute;
+}
+
+@keyframes pan-image {
+    0%{
+        background-position: 36% 42%;
+        background-size: 200%;
+    }
+    20%{
+        background-position: 30% 35%;
+        background-size: 200%;
+    }
+    20.0001%{
+        background-position: 60% 85%;
+        background-size: 500%;
+    }
+    40%{
+        background-position: 49% 81%;
+        background-size: 500%;
+    }
+    40.0001%{
+        background-position: 80% 42%;
+        background-size: 300%;
+    }
+    60%{
+        background-position: 84% 33%;
+        background-size: 300%;
+    }
+    60.0001%{
+        background-position: 0% 0%;
+        background-size: 300%;
+    }
+    80%{
+        background-position: 15% 15%;
+        background-size: 300%;
+    }
+    80.0001%{
+        background-position: 80% 10%;
+        background-size: 300%;
+    }
+    100% {
+        background-position: 72% 14%;
+        background-size: 300%;
+    }
+}
+
+@media screen and (width<1000px) {
+    .screen{
+        aspect-ratio: 7/10;   
+    }
+    .screen-content > a{
+        font-size: 6em;
+    }
+}
+@media screen and (width<700px) {
+    body{
+        flex-direction: column;
+    }
+}

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sprite.com/zerolimits</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="screen-content">
+      <a data-value="SUKRIT" href="https://github.com/Sukrittt" target="_blank"
+        >SUKRIT</a
+      >
+    </div>
+    <div class="screen">
+      <div class="screen-image"></div>
+      <div class="screen-overlay"></div>
+    </div>
+    <script>
+      document.querySelector("a").onmouseover = (event) => {
+        const letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+        let iterations = 0;
+        const interval = setInterval(() => {
+          event.target.innerText = event.target.innerText
+            .split("")
+            .map((letter, index) => {
+              if (index < iterations) {
+                return event.target.dataset.value[index];
+              }
+              return letters[Math.floor(Math.random() * 26)];
+            })
+            .join("");
+          if (iterations >= event.target.dataset.value.length) {
+            clearInterval(interval);
+          }
+          iterations += 1 / 3;
+        }, 30);
+      };
+    </script>
+  </body>
+</html>
